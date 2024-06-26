@@ -4,7 +4,7 @@ import styles from "./Loader.module.css";
 
 const Loader = () => (
   <div className={styles.loader}>
-    <ClipLoader color="#00BFFF" size={150} aria-label="loading" />
+    <ClipLoader color="#00BFFF" size={150} ariaLabel="loading" />
   </div>
 );
 

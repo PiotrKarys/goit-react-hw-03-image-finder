@@ -1,37 +1,48 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import styles from "./Searchbar.module.css";
 
-const Searchbar = ({ onSubmit }) => {
-  const [query, setQuery] = useState("");
+class Searchbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: "",
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  const handleChange = (e) => {
-    setQuery(e.target.value);
-  };
+  handleChange(e) {
+    this.setState({ query: e.target.value });
+  }
 
-  const handleSubmit = (e) => {
+  handleSubmit(e) {
     e.preventDefault();
-    onSubmit(query);
-    setQuery("");
-  };
+    this.props.onSubmit(this.state.query);
+    this.setState({ query: "" });
+  }
 
-  return (
-    <header className={styles.searchbar}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <button type="submit" className={styles.button}>
-          <span className={styles.buttonLabel}>Search</span>
-        </button>
-        <input
-          className={styles.input}
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search images and photos"
-          value={query}
-          onChange={handleChange}
-        />
-      </form>
-    </header>
-  );
-};
+  render() {
+    const { query } = this.state;
+
+    return (
+      <header className={styles.searchbar}>
+        <form className={styles.form} onSubmit={this.handleSubmit}>
+          <button type="submit" className={styles.button}>
+            <span className={styles.buttonLabel}>Search</span>
+          </button>
+          <input
+            className={styles.input}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+            value={query}
+            onChange={this.handleChange}
+          />
+        </form>
+      </header>
+    );
+  }
+}
 
 export default Searchbar;
