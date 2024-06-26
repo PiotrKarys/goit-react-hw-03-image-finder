@@ -1,0 +1,11 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}

@@ -1,0 +1,10 @@
+.galleryItem {
+  flex: 1 0 21%;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
